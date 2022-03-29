@@ -1,0 +1,42 @@
+.select::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid #000;
+  display: block;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+.selected {
+  border: 2px solid #333;
+  width: 173px;
+  height: 36px;
+  line-height: 34px;
+  text-align: center;
+  font-size: 13.5px;
+}
+.dropwdown {
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  left: 0;
+  top: 36px;
+  z-index:60;
+  background-color: #fff;
+}
+
+.dropwdown li {
+  height: 36px;
+  border: 2px solid #333;
+  border-top: none;
+  line-height: 34px;
+  font-size: 13.5px;
+  cursor: pointer;
+}
+.dropwdown li:hover {
+  color: #fff;
+  background: var(--gray);
+}

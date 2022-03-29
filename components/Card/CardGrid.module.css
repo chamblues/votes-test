@@ -1,0 +1,16 @@
+.card {
+    height: 348px;
+}
+.card_content {
+    transform: translateX(-50%);
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    z-index: 20;
+    width:280px;
+}
+@media screen and (max-width: 767px) {
+    .card_content {
+        width: 220px;
+    }
+}

@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    font-family: "Lato", sans-serif;
+  }
+}
+
+/* Custom CSS */
+:root {
+  --yellow: rgba(249, 173, 29, 0.8);
+  --green: rgba(60, 187, 180, 0.8);
+  --black: #464646;
+  --gray: rgba(48, 48, 48, 0.6);
+}
+.bg_yellow {
+  background: var(--yellow);
+}
+.bg_green {
+  background: var(--green);
+}
+.color_black {
+  color: var(--black);
+}
+.bg_gray {
+  background: var(--gray);
+}

@@ -1,0 +1,24 @@
+.card {
+  height: 170px;
+  overflow: hidden;
+}
+.card_list_image {
+  min-height: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+  position: absolute !important;
+  top: -50px !important;
+  transform: scale(0.8);
+  left: -28px !important;
+}
+@media screen and (min-width: 768px) {
+  .card_title {
+    font-size: 28px;
+  }
+  .card_list_image {
+    top: -10px !important;
+    transform: scale(1);
+    left: 0px !important;
+  }
+
+}

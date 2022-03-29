@@ -1,0 +1,10 @@
+.grid_container {
+  gap: 27px;
+}
+@media screen and (max-width: 767px) {
+  .grid_container {
+    gap: 12px;
+    grid-template-columns: repeat(6, 300px);
+    overflow: scroll;
+  }
+}

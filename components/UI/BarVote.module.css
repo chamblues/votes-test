@@ -1,0 +1,30 @@
+.grid {
+  height: 36px;
+}
+.grid .percentage {
+  font-size: 18px;
+  
+}
+.grid img {
+  min-height: 15px !important;
+  min-width: 15px !important;
+  margin: 0 !important
+}
+.grid .pad_fix {
+  padding-top: 0;
+}
+
+.list {
+  height: 54px;
+}
+.list .percentage {
+  font-size: 27px;
+  
+}
+.list img {
+  min-height: 24px !important;
+  min-width: 24px !important;
+}
+.list .pad_fix {
+  padding-top: 0.5rem;
+}

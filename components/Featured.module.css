@@ -1,0 +1,87 @@
+.bg_featured {
+  background: no-repeat top center;
+  height: 700px;
+  background-size: cover;
+}
+.hero_image {
+  position: absolute;
+}
+.hero_image_xs {
+  display: none !important;
+}
+.title {
+  font-size: 54px;
+  line-height: 1;
+}
+.bg_filter {
+  background: rgba(0, 0, 0, 0.4);
+  border: 0;
+}
+.left_bar {
+  background: rgba(0, 0, 0, 0.4);
+  height: 54px;
+  line-height: 54px;
+}
+.left_bar:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 11px solid rgba(0, 0, 0, 0.4);
+  display: block;
+  position: absolute;
+  right: -11px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.right_bar {
+  background: rgba(255, 255, 255, 0.4);
+  height: 54px;
+  line-height: 54px;
+}
+.final_question {
+  font-size: 27px;
+}
+
+@media screen and (max-width: 1024px) {
+  .bg_featured {
+    height: 470px;
+  }
+  .title {
+    font-size: 28px;
+  }
+  .final_question {
+    font-size: 21px;
+  }
+  .left_bar, .right_bar {
+    height: 42px;
+    line-height: 42px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .bg_featured {
+    height: 420px;
+    /* background-image: url("/images/pope-francis-xs.png"); */
+  }
+  .title {
+    font-size: 36px;
+  }
+  .final_question {
+    font-size: 12px;
+  }
+  .hero_image {
+    position: absolute;
+    display: none !important;
+  }
+  .hero_image_xs {
+    display: block !important;
+  }
+  .excerpt {
+      line-height: 17px;
+  }
+  .left_bar, .right_bar {
+    height: 36px;
+    line-height: 36px;
+  }
+}

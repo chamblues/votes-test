@@ -1,0 +1,25 @@
+.grid {
+    min-width: 30px;
+    min-height: 30px;
+}
+
+.list {
+    min-width: 45px;
+    min-height: 45px;
+}
+.list img {
+    min-height: 24px !important;
+}
+.grid img {
+    min-height: 15px  !important;
+}
+@media screen and (max-width: 1024px) {
+    .list, .grid {
+        min-width: 30px !important;
+        min-height: 30px !important;
+    }
+    .list img, .grid img {
+        min-height: 16px !important;
+    }
+    
+}
