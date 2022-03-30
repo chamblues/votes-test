@@ -23,19 +23,21 @@ const Layout = (props) => {
 				</div>
 
 			</header>
-
+			
+			{/* Start Main Content */}
 			<main className="main_section">
 				{props.children}
 			</main>
+			{/* End Main Content */}
 
 			<footer className="footer_section py-12">
 				<div className="container">
 					<div className="flex justify-between ">
 						<div className="pages w-3/5 xl:w-2/5">
 							<ul className="flex justify-between text-base md:text-lg flex-col md:flex-row">
-								<li><Link href=""><a>Terms and Conditions</a></Link></li>
-								<li><Link href=""><a>Privacy Policy</a></Link></li>
-								<li><Link href=""><a>Contact Us</a></Link></li>
+								<li><Link href="#"><a>Terms and Conditions</a></Link></li>
+								<li><Link href="#"><a>Privacy Policy</a></Link></li>
+								<li><Link href="#"><a>Contact Us</a></Link></li>
 							</ul>
 						</div>
 						<div className="social flex flex-col md:flex-row">

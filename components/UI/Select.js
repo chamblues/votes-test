@@ -14,6 +14,7 @@ const Select = (props) => {
     }
     const selectHandler = ({ target }) => {
         setIsActive(false)
+        setSelectedValue(target.innerText)
         props.viewHandler(target.innerText)
     }
 

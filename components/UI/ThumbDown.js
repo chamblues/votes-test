@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import classes from './ThumbDown.module.css'
 
-const ThumbDown = ({ variant, className }) => {
+const ThumbDown = ({ variant, className, onVoteSelected }) => {
     let styling;
 
     switch (variant) {
@@ -16,7 +16,7 @@ const ThumbDown = ({ variant, className }) => {
     }
 
     return (
-        <button className={`bg_yellow ${className} ${styling}`}>
+        <button className={`bg_yellow ${className} ${styling}`} onClick={() => {onVoteSelected('negative')}}>
             <Image src="/images/thumb-down.svg" alt="thumbs down" width={16} height={16} />
         </button>
     )
