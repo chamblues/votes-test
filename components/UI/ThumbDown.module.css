@@ -13,6 +13,10 @@
 .grid img {
     min-height: 15px  !important;
 }
+.others img {
+    min-width: 36px;
+    min-height: 36px;
+}
 @media screen and (max-width: 1024px) {
     .list, .grid {
         min-width: 30px !important;
@@ -21,6 +25,10 @@
     .list img, .grid img {
         min-height: 16px !important;
         min-width: 16px !important;
+    }
+    .others img {
+        min-width: 24px !important;
+        min-height: 24px !important;
     }
     
 }

@@ -12,12 +12,12 @@ const ThumbDown = ({ variant, className, onVoteSelected }) => {
             styling = classes.list
             break;
         default:
-            styling = ''
+            styling = classes.others
     }
 
     return (
         <button className={`bg_yellow ${className} ${styling}`} onClick={() => {onVoteSelected('negative')}}>
-            <Image src="/images/thumb-down.svg" alt="thumbs down" width={16} height={16} />
+            <Image src="/images/thumb-down.svg" alt="thumbs down" width={16} height={16} priority/>
         </button>
     )
 }

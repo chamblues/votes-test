@@ -4,10 +4,13 @@ import ThumbDown from '../UI/ThumbDown'
 import ButtonVote from '../UI/ButtonVote'
 import BarVote from '../UI/BarVote'
 import { useDataContext } from '../../context/DataContext'
+import useUpdateVote from '../../hooks/useUpdateVote'
+import Moment from 'react-moment'
 
-const CardGrid = ({ id, category, description, name, picture, thumbUpCount, thumbDownCount, cardVoted }) => {
+const CardGrid = ({ id, category, description, name, picture, dateTime, thumbUpCount, thumbDownCount, cardVoted }) => {
 
   const dataContext = useDataContext();
+  const updateVote = useUpdateVote();
 
   const voteHandler = (voteValue) => {
     dataContext.selectVote(id, voteValue)
@@ -20,16 +23,24 @@ const CardGrid = ({ id, category, description, name, picture, thumbUpCount, thum
     isSubmitted = cardVoted[0].isSubmitted
     voteThumbUp = cardVoted[0].vote === 'positive' ? classes.voted : ''
     voteThumbDown = cardVoted[0].vote === 'negative' ? classes.voted : ''
-  } 
+  }
 
-  if(isSubmitted){
+  if (isSubmitted) {
     eyebrowText = 'Thank you for voting!'
   } else {
     eyebrowText = '1 month ago in ' + category
   }
 
   const voteSubmittedHandler = () => {
+    const voteSelected = {
+      id,
+      voteValue: cardVoted[0].vote,
+      thumbUpCount,
+      thumbDownCount
+    }
+    updateVote(voteSelected)
     dataContext.voteSubmitted(id)
+
   }
 
   const onVoteAgainHandler = () => {
@@ -37,7 +48,13 @@ const CardGrid = ({ id, category, description, name, picture, thumbUpCount, thum
   }
 
   return (
-    <article className={`${classes.card} relative text-white`} style={{ background: "linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url(/images/" + picture + ") no-repeat center center" }}>
+    <article
+      className={`${classes.card} relative text-white`}
+      style={{
+        background: "linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url(/images/" + picture + ") no-repeat center center",
+        backgroundSize: "cover, cover"
+      }}
+    >
 
       <div className={`${classes.card_content}`}>
         <h2 className={`${classes.card_title} text-3xl xl:text-4xl`}>{name}</h2>
@@ -58,8 +75,8 @@ const CardGrid = ({ id, category, description, name, picture, thumbUpCount, thum
         </div>
       </div>
       <div className="result_thumb absolute left-0 z-30" style={{ bottom: '160px' }}>
-        <ThumbUp variant="grid" />
-        {/* <ThumbDown variant="grid" /> */}
+        {thumbUpCount > thumbDownCount ? <ThumbUp variant="grid"/> : <ThumbDown variant="grid" />}
+        
       </div>
       <BarVote thumbsUp={thumbUpCount} thumbsDown={thumbDownCount} variant="grid" />
     </article >

@@ -11,10 +11,12 @@ const Featured = () => {
 				<Image src="/images/pope-francis.jpg"
 					layout="fill" alt="Pope Francis" objectFit='cover'
 					className={`${classes.hero_image}`}
+					priority
 				/>
 				<Image src="/images/pope-francis-xs.png"
 					layout="fill" alt="Pope Francis" objectFit='cover'
 					className={`${classes.hero_image} ${classes.hero_image_xs}`}
+					priority
 				/>
 
 				<div className="container relative">
@@ -36,8 +38,8 @@ const Featured = () => {
 							<strong className={`${classes.final_question}`}>What’s Your Veredict?</strong>
 						</div>
 						<div className="flex">
-							<ThumbUp className="w-1/2 py-1 md:py-2 xl:py-6" width={16} height={16} />
-							<ThumbDown className="w-1/2 py-1 md:py-2 xl:py-6" width={16} height={16} />
+							<ThumbUp className="w-1/2 py-1 md:py-2 xl:py-6" variant="featured" onVoteSelected={() => { console.log('not for now ;)')}}/>
+							<ThumbDown className="w-1/2 py-1 md:py-2 xl:py-6"  variant="featured" onVoteSelected= {() => { console.log('not for now ;)')}}/>
 						</div>
 
 					</div>

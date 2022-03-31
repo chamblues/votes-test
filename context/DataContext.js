@@ -1,7 +1,8 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
 
 export const DataContext = createContext({
     votes: [],
+    initialVotes: () => { },
     selectVote: (id, vote) => { },
     voteSubmitted: (id) => { },
     voteAgain: (id) => { },
@@ -15,11 +16,26 @@ export const useDataContext = () => {
 
 export const DataProvider = (props) => {
 
+
     const [votes, setVotes] = useState([]);
 
+    // const initialVotesHandler = (votes) => {
+    //     setVotes(votes)
+    // }
+
+    useEffect(() => {
+        let isSubscribed = true;
+        const votesMade = localStorage.getItem('votes')
+        if (votesMade) {
+            setVotes(JSON.parse(votesMade))
+        }
+        return () => (isSubscribed = false)
+
+
+    }, [])
+
+
     const selectVoteHandler = (id, vote) => {
-
-
         setVotes(prevState => {
             const existingCardIndex = prevState.findIndex(vote => vote.id === id)
             const existingCard = prevState[existingCardIndex]  // if doesn't exist it will show undefined
@@ -39,7 +55,6 @@ export const DataProvider = (props) => {
 
             return updatedCardVotes
 
-
         })
 
     }
@@ -53,6 +68,7 @@ export const DataProvider = (props) => {
                 const updatedSubmittedVote = [...prevState]
                 updatedSubmittedVote[existingCardIndex].isSubmitted = true
 
+                localStorage.setItem('votes', JSON.stringify(updatedSubmittedVote))
                 return updatedSubmittedVote
             } else {
                 return prevState
@@ -70,6 +86,7 @@ export const DataProvider = (props) => {
                 updatedSubmittedVote[existingCardIndex].isSubmitted = false
                 updatedSubmittedVote[existingCardIndex].vote = ''
 
+                localStorage.setItem('votes', JSON.stringify(updatedSubmittedVote))
                 return updatedSubmittedVote
             } else {
                 return prevState
@@ -79,6 +96,7 @@ export const DataProvider = (props) => {
 
     const dataContext = {
         votes,
+        // initialVotes: initialVotesHandler,
         selectVote: selectVoteHandler,
         voteSubmitted: voteSubmittedHandler,
         voteAgain: voteAgainHandler,

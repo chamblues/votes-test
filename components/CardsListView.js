@@ -17,6 +17,7 @@ const CardsListView = ({ rulings }) => {
                         description={ruling.description}
                         name={ruling.name}
                         picture={ruling.picture}
+                        dateTime={ruling.lastUpdated}
                         thumbUpCount={ruling.votes.positive}
                         thumbDownCount={ruling.votes.negative}
                         cardVoted={votes.filter(vote => vote.id === index)}

@@ -1,27 +1,12 @@
-import { useState } from 'react'
 import CardGrid from './Card/CardGrid'
 import classes from './CardsGridView.module.css'
 import { useDataContext } from '../context/DataContext'
 
 const CardsGridView = ({ rulings }) => {
 
-	
-
 	const dataContext = useDataContext();
 
 	const votes = dataContext.votes
-
-	const votesHandler = (voteValue) => {
-		console.log('hello deja el flow')
-		// setRultingsData({
-		// 	...rulingsData,
-		// 	isVoted: voteValue
-		// })
-
-		
-	}
-
-	console.log('votes', votes)
 
 	return (
 
@@ -37,6 +22,7 @@ const CardsGridView = ({ rulings }) => {
 							description={ruling.description}
 							name={ruling.name}
 							picture={ruling.picture}
+							dateTime={ruling.lastUpdated}
 							thumbUpCount={ruling.votes.positive}
 							thumbDownCount={ruling.votes.negative}
 							cardVoted={votes.filter(vote => vote.id === index)}

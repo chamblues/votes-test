@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import CardsGridView from '../components/CardsGridView'
 import CardsListView from '../components/CardsListView'
@@ -6,22 +6,25 @@ import Dialog from '../components/Dialog'
 import Featured from '../components/Featured'
 import Layout from '../components/Layout'
 import Select from '../components/UI/Select'
-import { isMobile } from "react-device-detect";
+import { isMobileOnly } from "react-device-detect";
 import Referred from '../components/Referred'
 import { useDataContext } from '../context/DataContext'
 
 
 export default function Home({ rulings }) {
-  const [cardView, setCardView] = useState(isMobile ? 'Grid' : 'List');
+  const [cardView, setCardView] = useState('List');
 
   const dataContext = useDataContext()
 
   const viewCardsHandler = (view) => {
     setCardView(view)
   }
-
-  console.log(dataContext)
   
+  useEffect(() => {
+    setCardView(isMobileOnly ? 'Grid' : 'List')
+    
+  }, [])
+
 
 
   return (
@@ -29,7 +32,7 @@ export default function Home({ rulings }) {
       <Head>
         <title>Zemoga Test</title>
         <meta name="description" content="Test Application" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/images/favicon.ico" />
       </Head>
 
       <Featured />
@@ -45,8 +48,14 @@ export default function Home({ rulings }) {
             </div>
           </div>
         </div>
-        {cardView === 'List' && !isMobile ? <CardsListView rulings={rulings} /> : null}
-        {cardView === 'Grid' && <CardsGridView rulings={rulings} />}
+        <div className="view hidden md:block">
+          {cardView === 'List' && <CardsListView rulings={rulings} />}
+        </div>
+        <div className="view">
+          {cardView === 'Grid' && <CardsGridView rulings={rulings} />}
+        </div>
+
+
       </section>
 
       <Referred />
@@ -63,6 +72,12 @@ export async function getStaticProps(context) {
       throw new Error('There was a problem trying to get the data')
     }
     const rulings = await response.json()
+
+    // const votesFromStorage = localStorage.getItem('votes')
+    // let votesMade;
+    // if(votesFromStorage) {
+    //   votesMade = JSON.parse(votesMade)
+    // }
 
     return {
       props: { rulings }, // will be passed to the page component as props

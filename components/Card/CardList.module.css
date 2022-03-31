@@ -2,26 +2,34 @@
   height: 170px;
   overflow: hidden;
 }
-.card_list_image {
-  min-height: 0 !important;
-  height: auto !important;
-  margin: 0 !important;
-  position: absolute !important;
-  top: -50px !important;
-  transform: scale(0.8);
-  left: -28px !important;
+.card_image {
+  position: absolute;
+  width: 210px;
+}
+.content {
+  padding-left: 210px;
+}
+.card_title {
+  font-size: 36px;
+  line-height: 1;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  
 }
 .voted {
   border: 1px solid #fff;
 }
-@media screen and (min-width: 768px) {
+
+@media screen and (max-width: 1024px) {
   .card_title {
     font-size: 28px;
+    line-height: 0.9;
+    
   }
-  .card_list_image {
-    top: -10px !important;
-    transform: scale(1);
-    left: 0px !important;
+  .card_image {
+    width: 170px;
   }
-
+  .content {
+    padding-left: 180px;
+  }
 }

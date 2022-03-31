@@ -12,6 +12,7 @@
 }
 .grid .pad_fix {
   padding-top: 0;
+  white-space: nowrap;
 }
 
 .list {
@@ -27,4 +28,18 @@
 }
 .list .pad_fix {
   padding-top: 0.5rem;
+  white-space: nowrap;
+}
+@media screen and (max-width: 1024px) {
+  .list {
+    height: 36px;
+  }
+  .list .percentage {
+    font-size: 18px;
+    
+  }
+  .list .pad_fix {
+    padding-top: 0;
+    line-height: 32px;
+  }
 }
